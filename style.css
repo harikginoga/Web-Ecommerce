@@ -94,55 +94,45 @@ header {
 }
 @keyframes slide {
     0% {
-        left:0px;
-      
+        transform: translateX(0px);
     }
     15% {
-        left:0px;
-      
+        transform: translateX(0px);
     }
     20% {
-        left:-1080px;
-      
+        transform: translateX(-1080px);
     }
     32% {
-        left:-1080px;
-      
+        transform: translateX(-1080px);
     }
     35% {
-        left:-2160px;
-      
+        transform: translateX(-2160px);
     }
     47% {
-        left:-2160px;
-      
+        transform: translateX(-2160px);
     }
     50% {
-        left:-3240px;
-      
+        transform: translateX(-3240px);
     }
     63% {
-        left:-3240px;
-      
+        transform: translateX(-3240px);
     }
     66% {
-        left:-4320px;
-      
+        transform: translateX(-4320px);
     }
     79% {
-        left:-4320px;
-      
+        transform: translateX(-4320px);
     }
     82% {
-        left:-5400px;
+        transform: translateX(-5400px);
     }
     100% {
-        left:0px;
+        transform: translateX(0px);
     }
 }
 .img-slider {
     display:flex;
-    float:left;
+    /* float:left; removed */
     position:relative;
     width:1080px;
     height:720px;
@@ -174,47 +164,60 @@ header {
     margin:10px auto;
 }
 .section2 .container .items {
-    margin: 10px;
-    width:200px;
-    height: 300px;
+    margin: 15px; /* Increased margin slightly */
+    width:220px; /* Increased width slightly */
+    min-height: 320px; /* Changed to min-height and increased */
     background-color:white;
-    border:2.5px solid black;
+    border:1px solid #ddd; /* Softer border */
     border-radius: 12px;
+    padding: 15px; /* Added padding */
+    display: flex; /* Added flex display */
+    flex-direction: column; /* Column direction */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Added subtle shadow */
 }
 
 .section2 .container .items .name {
     text-align:center;
     background-color:rgb(240, 197, 6);
-    height:25px;
-    padding-top:4px;
+    padding: 8px 5px; /* Adjusted padding */
     color:white;
-    margin: 0;
+    margin: -15px -15px 10px -15px; /* Adjusted margin to extend to padding edge */
+    font-weight: bold; /* Added font-weight */
+    border-top-left-radius: 12px; /* Match parent radius */
+    border-top-right-radius: 12px; /* Match parent radius */
 }
 .section2 .container .items .price {
-    float:left;
-    padding-left:10px;
+    /* float:left; removed */
+    /* padding-left:10px; remove, handled by item padding */
     display: block;
     width:100%;
     color:rgb(255, 0, 0);
     font-weight: 650;
+    font-size: 1.1em; /* Slightly larger price */
+    margin-bottom: 8px; /* Added margin */
 }
 .section2 .container .items .info {
-    padding-left:10px;
-    color:rgb(243, 168, 7);
+    /* padding-left:10px; remove, handled by item padding */
+    color:rgb(100, 100, 100); /* Softer info color */
+    font-size: 0.9em; /* Slightly smaller info */
+    flex-grow: 1; /* Allow info to take available space */
+    margin-bottom: 10px; /* Added margin */
 }
 
-.section2 .container .items .img img {
-    width:200px;
-    height:200px;
-    margin: 0;
-    padding: 0;
-    border-radius:12px;
-    transition-duration:0.8s;
-}
-
-.section2 .container .items .img {
+.section2 .container .items .img { /* Renamed from .img img for the container */
+    width: 100%; /* Take full width of padding box */
+    height: 180px; /* Fixed height for image container */
     overflow: hidden;
-    margin: 0;
+    margin-bottom: 10px; /* Space below image */
+    border-radius: 8px; /* Rounded corners for image container */
+}
+
+.section2 .container .items .img img { /* Styles for the actual image */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container, might crop */
+    border-radius:0px; /* Image itself doesn't need radius if container has it and clips */
+    transition-duration:0.8s;
 }
 
 .section2 .container .items:hover .img img {
@@ -304,9 +307,7 @@ header {
     margin:10px;
 }
 
-.menu {
-    visibility:hidden;
-}
+/* Removed global .menu visibility rule that was here */
 
 .heading1 .ham:active {
     color: red;
@@ -340,10 +341,34 @@ header {
     }
 
 .menu {
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-    }
+    /* display:flex; was here, but it's the visible state. Default is hidden. */
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    /* Other styles like width, height, background-color for the mobile menu itself are in .menu ul */
+}
+
+.view-details-btn {
+    background-color: #f0c14b; /* Amazon-like yellow */
+    color: #111;
+    border: 1px solid #a88734;
+    padding: 8px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px; /* Ensures space above the button */
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding doesn't increase width */
+    text-align: center;
+    font-weight: bold;
+}
+.view-details-btn:hover {
+    background-color: #e4b343;
+}
+
+.menu.menu-visible {
+    display: flex; /* This makes the menu visible */
+}
 
 .menu a ion-icon {
         position: absolute;
@@ -351,51 +376,51 @@ header {
 
 @keyframes slide1 {
         0% {
-            left:0vw;
+            transform: translateX(0vw);
         }
 
         15% {
-            left:0vw;
+            transform: translateX(0vw);
         }
 
         20% {
-            left:-80vw;
+            transform: translateX(-80vw);
         }
 
         32% {
-            left:-80vw;
+            transform: translateX(-80vw);
         }
 
         35% {
-            left:-160vw;
+            transform: translateX(-160vw);
         }
 
         47% {
-            left:-160vw;
+            transform: translateX(-160vw);
         }
 
         50% {
-            left:-240vw;
+            transform: translateX(-240vw);
         }
 
         63% {
-            left:-240vw;
+            transform: translateX(-240vw);
         }
 
         66% {
-            left:-320vw;
+            transform: translateX(-320vw);
         }
 
         79% {
-            left:-320vw;
+            transform: translateX(-320vw);
         }
 
         82% {
-            left:-400vw;
+            transform: translateX(-400vw);
         }
 
         100% {
-            left:0vw;
+            transform: translateX(0vw);
         }
 }
 .menu ul {
@@ -445,7 +470,7 @@ header {
 
 .img-slider {
         display:flex;
-        float:left;
+    /* float:left; removed */
         position:relative;
         width:80%;
         height:60%;
