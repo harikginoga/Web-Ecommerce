@@ -84,7 +84,7 @@ header {
 .search a {
     display:flex;
 }
-#header a ion-icon {
+header a ion-icon {
     position:relative;
     right:3px;
 }
@@ -484,7 +484,7 @@ header {
         flex-shrink:2;
     }
 
-#header {
+    header {
         height:150px;
     }
 
@@ -498,7 +498,7 @@ header {
         bottom:8px;
     }
 
-#header {
+    header {
         height:250px;
         flex-wrap: wrap;
         display: flex;
